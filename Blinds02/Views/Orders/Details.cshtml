@@ -1,0 +1,51 @@
+﻿@model Blinds02.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Order Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderItems.Count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderItems.Count)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to Order List", "Index") | 
+    @Html.ActionLink("Add new Item", "Create", "OrderItems", new { orderID = Model.OrderID }, Model)
+</p>

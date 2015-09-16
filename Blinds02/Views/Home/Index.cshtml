@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>BLINDS STORE</h1>
+    <p class="lead">ADMIN SITE</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>CUSTOMERS</h2>
+        <p>
+            Show, Add, Edit or Delete the Customers.
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Show Customers", "Index", "Customers")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>ORDERS</h2>
+        <p>
+            Show, Add, Edit or Delete the Orders.
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Show Orders", "Index", "Orders")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>NEW BLIND</h2>
+        <p>
+            Check the price by calculating new Blind.
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Add new Blind", "Create", "BlindItems")</p>
+    </div>
+</div>

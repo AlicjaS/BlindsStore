@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Blinds02.Models.Textile>
+
+@{
+    ViewBag.Title = "Textiles";
+}
+
+<h2>List of Textiles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TextileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextilePrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TextileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TextilePrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TextileID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TextileID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TextileID })
+        </td>
+    </tr>
+}
+
+</table>
