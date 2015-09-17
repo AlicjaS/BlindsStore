@@ -14,7 +14,11 @@ namespace Blinds02.Models
         public double Price { get; set; }
 
         public string Name { get; set; }
+
+        [RangeAttribute(0.3, 1.7)]
         public double Width { get; set; }
+
+        [RangeAttribute(0.7, 2.2)]
         public double Height { get; set; }
 
         public int TextileID { get; set; }

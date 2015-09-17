@@ -15,14 +15,18 @@ namespace Blinds02.Controllers
         private Blinds02Context db = new Blinds02Context();
 
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult Index(int? customerID)
         {
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.OrderItems);
-            foreach (var item in orders)
+            if (customerID == null)
             {
-                item.UpdateOrderValue();
+                return View(orders.ToList());
             }
-            return View(orders.ToList());
+            else
+            {
+                var customerOrders = orders.Where(o => o.CustomerID == customerID);
+                return View(customerOrders.ToList());
+            }
         }
 
         // GET: Orders/Details/5

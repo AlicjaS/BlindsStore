@@ -10,6 +10,7 @@ namespace Blinds02.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            //ContextKey = "Blinds02.Models.Blinds02Context";
         }
 
         protected override void Seed(Blinds02.Models.Blinds02Context context)

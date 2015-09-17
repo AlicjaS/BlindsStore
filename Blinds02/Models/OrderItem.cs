@@ -24,7 +24,7 @@ namespace Blinds02.Models
 
         public void UpdatePrice(BlindItem blindItem)
         {
-            this.Price = blindItem.Price * this.Quantity;
+            this.Price = Math.Round(blindItem.Price * this.Quantity, 2);
         }
     }
 }

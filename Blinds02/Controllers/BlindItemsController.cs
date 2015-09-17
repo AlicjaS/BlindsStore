@@ -25,7 +25,7 @@ namespace Blinds02.Controllers
             return View(last20BlindItems.ToList());
         }
 
-        // GET: BlindItems/Details/5
+        // GET: BlindItems/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,6 +34,7 @@ namespace Blinds02.Controllers
             }
 
             BlindItem blindItem = db.BlindItems.Include(b => b.Textile).Where(o => o.BlindItemID == id).First();
+
             if (blindItem == null)
             {
                 return HttpNotFound();
@@ -49,8 +50,6 @@ namespace Blinds02.Controllers
         }
 
         // POST: BlindItems/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BlindItemID,Width,Height,TextileID")] BlindItem blindItem)

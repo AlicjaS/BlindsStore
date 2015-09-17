@@ -29,6 +29,7 @@ namespace Blinds02.Models
             {
                 this.OrderValue += item.Price;
             }
+            this.OrderValue = Math.Round(this.OrderValue.Value, 2);
         }
     }
 }
