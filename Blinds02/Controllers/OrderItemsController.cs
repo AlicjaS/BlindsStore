@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Blinds02.Models;
 
@@ -40,8 +37,7 @@ namespace Blinds02.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderItem orderItem = db.OrderItems.Include(o => o.BlindItem).Include(o => o.Order).
-                FirstOrDefault(o => o.OrderItemID == id);
+            OrderItem orderItem = db.OrderItems.Find(id);
             if (orderItem == null)
             {
                 return HttpNotFound();
@@ -168,7 +164,7 @@ namespace Blinds02.Controllers
 
         public ActionResult UpdateOrder(int id)
         {
-            Order order = db.Orders.Include(o => o.OrderItems).FirstOrDefault(o => o.OrderID == id);
+            Order order = db.Orders.Find(id);
             order.UpdateOrderValue();
 
             if (ModelState.IsValid)

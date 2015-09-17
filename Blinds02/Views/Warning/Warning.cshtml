@@ -1,0 +1,12 @@
+﻿@model Blinds02.Models.Warning
+@{
+    ViewBag.Title = "Warning";
+}
+
+<h2>Warning</h2>
+<p>
+    @Html.DisplayFor(modelItem => Model.WarningText)
+</p>
+<p>
+    @Html.ActionLink("Back to Home Page", "Index", "Home")
+</p>

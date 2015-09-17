@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Blinds02.Models
 {
@@ -22,7 +19,7 @@ namespace Blinds02.Models
         public double Height { get; set; }
 
         public int TextileID { get; set; }
-        public Textile Textile { get; set; }
+        public virtual Textile Textile { get; set; }
 
         public void UpdateItem(Textile textile)
         {

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blinds02.Models
 {
@@ -12,9 +9,9 @@ namespace Blinds02.Models
         public int OrderID { get; set; }
 
         public int? CustomerID { get; set; }
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
 
-        public List<OrderItem> OrderItems { get; set; }
+        public virtual List<OrderItem> OrderItems { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? DeliveryDate { get; set; }

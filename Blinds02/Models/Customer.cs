@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blinds02.Models
 {
@@ -21,5 +17,7 @@ namespace Blinds02.Models
         [Display(Name = "Phone Number")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Numer telefonu jest niepoprawny.")]
         public string Mobile { get; set; }
+
+        public virtual List<Order> Orders { get; set; }
     }
 }

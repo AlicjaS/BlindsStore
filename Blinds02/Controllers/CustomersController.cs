@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Blinds02.Models;
 
@@ -42,8 +39,6 @@ namespace Blinds02.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustomerID,CustomerName,Address,Email,Mobile")] Customer customer)
@@ -74,8 +69,6 @@ namespace Blinds02.Controllers
         }
 
         // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CustomerID,CustomerName,Address,Email,Mobile")] Customer customer)
@@ -95,6 +88,11 @@ namespace Blinds02.Controllers
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (db.Orders.Where(o => o.CustomerID == id).Count() > 0)
+            {
+                return RedirectToAction("Warning", "Warning", new Warning()
+                { WarningText = "You can't delete this Customer - there are orders connected to him." });
             }
             Customer customer = db.Customers.Find(id);
             if (customer == null)
