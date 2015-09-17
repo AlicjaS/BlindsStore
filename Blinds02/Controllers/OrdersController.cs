@@ -111,7 +111,7 @@ namespace Blinds02.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Include(o => o.Customer).FirstOrDefault(o => o.OrderID == id);
             if (order == null)
             {
                 return HttpNotFound();
