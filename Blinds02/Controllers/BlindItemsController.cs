@@ -16,9 +16,9 @@ namespace Blinds02.Controllers
         {
             var blindItems = db.BlindItems.Include(b => b.Textile);
             var last20BlindItems = (from item in blindItems
-                                   where item.BlindItemID > (blindItems.Count() - 20)
-                                   orderby item.BlindItemID descending
-                                   select item);
+                                    where item.BlindItemID > (blindItems.Count() - 20)
+                                    orderby item.BlindItemID descending
+                                    select item);
             return View(last20BlindItems.ToList());
         }
 
@@ -29,8 +29,7 @@ namespace Blinds02.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            BlindItem blindItem = db.BlindItems.Include(b => b.Textile).FirstOrDefault(o => o.BlindItemID == id);
+            BlindItem blindItem = db.BlindItems.Find(id);
 
             if (blindItem == null)
             {
@@ -51,7 +50,7 @@ namespace Blinds02.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BlindItemID,Width,Height,TextileID")] BlindItem blindItem)
         {
-            Textile textile = db.Textiles.FirstOrDefault(o => o.TextileID == blindItem.TextileID);
+            Textile textile = db.Textiles.Find(blindItem.TextileID);
 
             blindItem.UpdateItem(textile);
 
@@ -87,7 +86,7 @@ namespace Blinds02.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BlindItemID,Width,Height,TextileID")] BlindItem blindItem)
         {
-            Textile textile = db.Textiles.FirstOrDefault(o => o.TextileID == blindItem.TextileID);
+            Textile textile = db.Textiles.Find(blindItem.TextileID);
 
             blindItem.UpdateItem(textile);
             if (ModelState.IsValid)

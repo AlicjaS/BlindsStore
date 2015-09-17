@@ -7,7 +7,7 @@ namespace Blinds02.Models
     {
         public int BlindItemID { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DisplayFormat(DataFormatString = "{0:0.00 zł}")]
         public double Price { get; set; }
 
         public string Name { get; set; }

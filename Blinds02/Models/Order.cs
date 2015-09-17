@@ -13,10 +13,10 @@ namespace Blinds02.Models
 
         public virtual List<OrderItem> OrderItems { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime? DeliveryDate { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DisplayFormat(DataFormatString = "{0:0.00 zł}")]
         public double? OrderValue { get; set; }
 
         public void UpdateOrderValue()

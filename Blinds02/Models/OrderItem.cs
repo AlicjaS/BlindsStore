@@ -15,7 +15,7 @@ namespace Blinds02.Models
 
         public int Quantity { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DisplayFormat(DataFormatString = "{0:0.00 zł}")]
         public double Price { get; set; }
 
         public void UpdatePrice(BlindItem blindItem)

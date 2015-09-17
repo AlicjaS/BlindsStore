@@ -9,7 +9,7 @@ namespace Blinds02.Models
         [Required]
         public string TextileName { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DisplayFormat(DataFormatString = "{0:0.00 zł}")]
         public double TextilePrice { get; set; }
     }
 }
