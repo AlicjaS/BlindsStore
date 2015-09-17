@@ -41,7 +41,7 @@ namespace Blinds02.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             OrderItem orderItem = db.OrderItems.Include(o => o.BlindItem).Include(o => o.Order).
-                Where(o => o.OrderItemID == id).First();
+                FirstOrDefault(o => o.OrderItemID == id);
             if (orderItem == null)
             {
                 return HttpNotFound();
@@ -168,7 +168,7 @@ namespace Blinds02.Controllers
 
         public ActionResult UpdateOrder(int id)
         {
-            Order order = db.Orders.Include(o => o.OrderItems).Where(o => o.OrderID == id).First();
+            Order order = db.Orders.Include(o => o.OrderItems).FirstOrDefault(o => o.OrderID == id);
             order.UpdateOrderValue();
 
             if (ModelState.IsValid)

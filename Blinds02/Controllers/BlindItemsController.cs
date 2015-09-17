@@ -33,7 +33,7 @@ namespace Blinds02.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            BlindItem blindItem = db.BlindItems.Include(b => b.Textile).Where(o => o.BlindItemID == id).First();
+            BlindItem blindItem = db.BlindItems.Include(b => b.Textile).FirstOrDefault(o => o.BlindItemID == id);
 
             if (blindItem == null)
             {
@@ -54,7 +54,7 @@ namespace Blinds02.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BlindItemID,Width,Height,TextileID")] BlindItem blindItem)
         {
-            Textile textile = db.Textiles.Where(o => o.TextileID == blindItem.TextileID).First();
+            Textile textile = db.Textiles.FirstOrDefault(o => o.TextileID == blindItem.TextileID);
 
             blindItem.UpdateItem(textile);
 
@@ -92,8 +92,7 @@ namespace Blinds02.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BlindItemID,Width,Height,TextileID")] BlindItem blindItem)
         {
-
-            Textile textile = db.Textiles.Where(o => o.TextileID == blindItem.TextileID).First();
+            Textile textile = db.Textiles.FirstOrDefault(o => o.TextileID == blindItem.TextileID);
 
             blindItem.UpdateItem(textile);
             if (ModelState.IsValid)

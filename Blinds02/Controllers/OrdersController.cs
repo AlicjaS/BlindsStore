@@ -37,7 +37,7 @@ namespace Blinds02.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Include(o => o.Customer).Include(o => o.OrderItems).
-                Where(o => o.OrderID == id).First();
+                FirstOrDefault(o => o.OrderID == id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace Blinds02.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Include(o => o.Customer).Include(o => o.OrderItems).
-                Where(o => o.OrderID == id).First();
+                FirstOrDefault(o => o.OrderID == id);
             if (order == null)
             {
                 return HttpNotFound();
